@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
-
+import { useEffect, useState } from "react";
+import { ResultCard } from "./components/ResultCard";
+import { getResults } from "./services/apiRequests";
+import {SearchInput} from './components/SearchInput'
 function App() {
-  return (
+
+  let [searchResult , setSearchResult] = useState([])
+
+  useEffect(() => {
+    getResults()
+    .then(res => setSearchResult(res.data))
+  },[])
+
+
+  return searchResult ?
+  (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <SearchInput />
+        <ul className="resultsList">
+          {searchResult.map(each => <ResultCard key={each.id} {...each}/>)}
+        </ul>
     </div>
-  );
+  ) 
+  : null
 }
 
 export default App;

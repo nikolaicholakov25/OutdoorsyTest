@@ -1,0 +1,27 @@
+.imgBox{
+    width: 20%;
+    border-radius: 1rem;
+    overflow: hidden;
+    /* display: inline-block; */
+}
+.description{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 1.5rem;
+    color: rgba(0, 0, 0, 0.781);
+}
+.resultsList{
+    width: 100%;
+    margin: 0;
+    margin-top: 2em;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.resultCard{
+    list-style: none;
+    display: flex;
+    gap: 2em;
+}
