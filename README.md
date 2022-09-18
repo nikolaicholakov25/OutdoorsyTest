@@ -32,4 +32,4 @@ And then open the app with
 	- rating filter
 
 - improve the UI
-- add offers section for loyal client
+- add offers section for loyal clients
