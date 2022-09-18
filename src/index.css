@@ -23,6 +23,17 @@ code {
 }
 
 .App {
-  width: 85vw;
+  width: 80vw;
   margin: auto;
+}
+
+.inputField input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.527);
+}
+.inputField {
+  margin-top: 2rem;
 }
