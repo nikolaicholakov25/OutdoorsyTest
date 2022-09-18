@@ -18,27 +18,29 @@ function App(){
 
   const newSearch = (newQuery:string):void => {
     searchFor(newQuery)
-    .then(res => setSearchResult(res.data))
+    .then(res => {
+      setSearchResult(res.data)
+      setImagesArray(res.included)
+    })
   }
 
-  console.log(imagesArray);
-  
   interface EachProps {
-      attributes?:{
-        primary_image_url?:string;
-        name?:string;
-    }
-    id?:string;
-    relationships?: {
-        primary_image: {
-            data: {
-                id:string;
-                type: string;
-            }
-        }
-    };
-    type?: string;
-    key?:string;
+    attributes?:{
+      primary_image_url?:string;
+      name?:string;
+  }
+  imgArray:object[]
+  id?:string;
+  relationships?: {
+      primary_image?: {
+          data?: {
+              id:string;
+              type: string;
+          }
+      }
+  };
+  type?: string;
+  key?:string;
   }
 
   return ( 
@@ -47,7 +49,7 @@ function App(){
         <ul className="resultsList">
           {
             searchResult.length > 0
-            ? searchResult.map((each:EachProps) => <ResultCard key={each.id} {...each}/>)
+            ? searchResult.map((each:EachProps) => <ResultCard imgArray={imagesArray} key={each.id} {...each}/>)
             :
             <li>No Matches Found</li>
           }
